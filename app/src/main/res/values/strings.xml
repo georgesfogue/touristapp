@@ -1,8 +1,15 @@
 <resources>
-    <string name="app_name">Inscription</string>
+    <string name="app_name">Memo Tourisme</string>
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
     <string name="hint_name">Votre Nom</string>
+    <string name="hint_namep">Pays</string>
+    <string name="hint_namev">Ville</string>
+    <string name="hint_adr">Adresse</string>
+    <string name="hint_namet">Activité</string>
+    <string name="hint_namedes">Description</string>
+    <string name="btn_ok">Valider</string>
+    <string name="btn_quit">Quitter</string>
     <string name="btn_login">Connexion</string>
     <string name="btn_register">S\'inscrire</string>
     <string name="btn_link_to_register">Pas encore membre? Inscriver Vous</string>
@@ -11,4 +18,11 @@
     <string name="btn_logout">Déconnexion</string>
     <string name="name">Votre Nom</string>
     <string name="facebook_app_id">196543997501183</string>
+
+
+    <string name="hint_heured">Heure debut</string>
+    <string name="hint_heuref">Heure fin</string>
+    <string name="hint_act">Titre de l\'activité</string>
+    <string name="hint_desc">Description de l\'activité</string>
+
 </resources>

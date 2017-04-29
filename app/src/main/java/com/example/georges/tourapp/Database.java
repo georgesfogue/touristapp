@@ -21,6 +21,8 @@ public class Database extends SQLiteOpenHelper {
     private static final String COL_EMAIL = "EMAIL";
     private static final String COL_PASSWORD = "PASSWORD";
 
+
+
     private static final String CREATE_BDD = "CREATE TABLE " + TABLE_USER + " ("
             + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COL_NOM + " TEXT NOT NULL, "
             + COL_EMAIL + " TEXT NOT NULL," + COL_PASSWORD + " TEXT NOT NULL);";

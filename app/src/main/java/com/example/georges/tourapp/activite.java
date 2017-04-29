@@ -1,89 +1,95 @@
 package com.example.georges.tourapp;
 
+import java.util.Date;
+
 /**
- * Created by Georges on 28/04/2017.
+ * Created by Georges on 18/04/2017.
  */
 
 public class activite {
 
-    private String nomVille;
     private String nomPays;
-    private int nbreHabitants;
+    private String nomVille;
+    private String addresse;
+    private Date dateopen;
+    private Date Horairedebut;
+    private Date Horairefin;
     private String activite;
     private String description;
-    private String jour;
 
-
-    //Constructeur avec paramètres
-    public activite(String pays,String ville, int Nbrhabit,  String Activite, String Description, String Jour)
-    {
-        nomVille = ville;
-        nomPays = pays;
-        nbreHabitants = Nbrhabit;
-        activite = Activite;
-        description = Description;
-        jour = Jour;
+    public activite(String nomPays, String nomVille, String addresse, Date dateopen, Date horaire, String activite, String description, Date horairefin) {
+        this.nomPays = nomPays;
+        this.nomVille = nomVille;
+        this.addresse = addresse;
+        this.dateopen = dateopen;
+        Horairedebut = horaire;
+        Horairefin = horairefin;
+        this.activite = activite;
+        this.description = description;
     }
 
-    //*************   ACCESSEURS *************
-
-    //Retourne le nom de la ville
-    public String getNomVille(){
-        return nomVille;
-    }
-    //Retourne la description
-    public String getdescrip(){
-        return description;
+    public Date getHorairefin() {
+        return Horairefin;
     }
 
-    //Retourne le nom du pays
-    public String getNomPays(){
+    public void setHorairefin(Date horairefin) {
+        Horairefin = horairefin;
+    }
+
+    public void setNomPays(String nomPays) {
+        this.nomPays = nomPays;
+    }
+
+    public void setNomVille(String nomVille) {
+        this.nomVille = nomVille;
+    }
+
+    public void setAddresse(String addresse) {
+        this.addresse = addresse;
+    }
+
+    public void setDateopen(Date dateopen) {
+        this.dateopen = dateopen;
+    }
+
+    public void setHoraire(Date horaire) {
+        Horairedebut = horaire;
+    }
+
+    public void setActivite(String activite) {
+        this.activite = activite;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getNomPays() {
         return nomPays;
     }
 
-    // Retourne le nombre d'habitants
-    public int getNombreHabitants(){
-        return nbreHabitants;
+    public String getNomVille() {
+        return nomVille;
     }
-    // Retourne l'activité
-    public String getActivite(){
+
+    public String getAddresse() {
+        return addresse;
+    }
+
+    public Date getDateopen() {
+        return dateopen;
+    }
+
+    public Date getHoraire() {
+        return Horairedebut;
+    }
+
+    public String getActivite() {
         return activite;
     }
 
-    //Retourne le jour de l'activite
-    public String getjour(){
-        return jour;
-    }
-
-    //*************   MUTATEURS   *************
-
-    //Définit le nom de la ville
-    public void setNomVille(String pNom){
-        nomVille = pNom;
-    }
-
-    //Définit le nom de la ville
-    public void setdescip(String pdescrip){
-        description = pdescrip;
-    }
-
-    //Définit le nom du pays
-    public void setNomPays(String pPays){
-        nomPays = pPays;
-    }
-    //Définit le nom du pays
-    public void setActivite(String pactivite){
-        activite = pactivite;
-    }
-
-    //Définit le nombre d'habitants
-    public void setNombreHabitants(int nbre){
-        nbreHabitants = nbre;
-    }
-
-    //Définit le nombre d'habitants
-    public void setjour(String jourac){
-        jour = jourac;
+    public String getDescription() {
+        return description;
     }
 
 }
