@@ -55,8 +55,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         
-        // SqLite database handler
-        //db = new SQLiteHandler(getApplicationContext());
 
         initializeControls();
         loginwithFB();
