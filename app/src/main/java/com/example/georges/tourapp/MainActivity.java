@@ -25,9 +25,6 @@ public class MainActivity extends AppCompatActivity {
 
     private Button btnLinkToRegister;
 
-    //private SQLiteHandler db;
-    //private SessionManager session;
-
     TextView txtStatus;
     LoginButton login_button;
     CallbackManager callbackManager;
@@ -54,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
-        //ekbfcjbezbskcfjbsq d§C§B KZ XBNQS,;cbn sjcbsjd
 
         initializeControls();
         loginwithFB();
