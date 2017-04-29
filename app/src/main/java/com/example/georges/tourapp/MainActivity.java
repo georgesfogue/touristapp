@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
-        
+        //ekbfcjbezbskcfjbsq d§C§B KZ XBNQS,;cbn sjcbsjd
 
         initializeControls();
         loginwithFB();
