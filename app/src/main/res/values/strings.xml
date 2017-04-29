@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Inscription</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_name">Votre Nom</string>
+    <string name="btn_login">Connexion</string>
+    <string name="btn_register">S\'inscrire</string>
+    <string name="btn_link_to_register">Pas encore membre? Inscriver Vous</string>
+    <string name="btn_link_to_login">Déja inscrit! Se connecter.</string>
+    <string name="welcome">Welcome</string>
+    <string name="btn_logout">Déconnexion</string>
+    <string name="name">Votre Nom</string>
+    <string name="facebook_app_id">196543997501183</string>
+</resources>
