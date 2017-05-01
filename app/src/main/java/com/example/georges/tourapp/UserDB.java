@@ -11,7 +11,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 public class UserDB {
 
-    private static final int VERSION_BDD = 1;
+    private static final int VERSION_BDDB = 1;
     private static final String NOM_BDD = "DBtour.db";
 
     private static final String TABLE_USER = "table_user";
@@ -24,13 +24,14 @@ public class UserDB {
     private static final String COL_PASSWORD = "PASSWORD";
     private static final int NUM_COL_PASSWORD = 3;
 
+
     private SQLiteDatabase bdd;
 
     private Database maBaseSQLite;
 
     public UserDB(Context context){
         //On crée la BDD et sa table
-        maBaseSQLite = new Database(context, NOM_BDD, null, VERSION_BDD);
+        maBaseSQLite = new Database(context, NOM_BDD, null, VERSION_BDDB);
     }
 
     public void open(){
@@ -47,7 +48,8 @@ public class UserDB {
         return bdd;
     }
 
-    public long insertUser(user users){
+
+    public long insertUser(Users users) {
         //Création d'un ContentValues (fonctionne comme une HashMap)
         ContentValues values = new ContentValues();
         //on lui ajoute une valeur associée à une clé (qui est le nom de la colonne dans laquelle on veut mettre la valeur)
@@ -58,7 +60,7 @@ public class UserDB {
         return bdd.insert(TABLE_USER, null, values);
     }
 
-    public int updateUser(int id, user users){
+    public int updateUser(int id, Users users) {
         //La mise à jour d'un utilisateur dans la BDD fonctionne plus ou moins comme une insertion
         //il faut simplement préciser quel utilisateur on doit mettre à jour grâce à l'ID
         ContentValues values = new ContentValues();
@@ -68,27 +70,28 @@ public class UserDB {
         return bdd.update(TABLE_USER, values, COL_ID + " = " +id, null);
     }
 
-    public int removeUserID(int id){
+    public int removeActivite(int id) {
         //Suppression d'un utilisateur de la BDD grâce à l'ID
         return bdd.delete(TABLE_USER, COL_ID + " = " +id, null);
     }
 
-    public user getUserWithName(String email){
+
+    public Users getUserWithName(String email) {
         //Récupère dans un Cursor les valeurs correspondant à un utilisateur contenu dans la BDD (ici on sélectionne l'utilisateur grâce à son nom)
         Cursor c = bdd.query(TABLE_USER, new String[] {COL_ID, COL_NOM, COL_EMAIL, COL_PASSWORD}, COL_EMAIL + " LIKE \"" + email +"\"", null, null, null, null, null);
         return cursorToUser(c);
     }
 
     //Cette méthode permet de convertir un cursor en un utilisateur
-    private user cursorToUser(Cursor c){
+    private Users cursorToUser(Cursor c) {
         //si aucun élément n'a été retourné dans la requête, on renvoie null
         if (c.getCount() == 0)
             return null;
 
         //Sinon on se place sur le premier élément
         c.moveToFirst();
-        //On créé un livre
-        user usr = new user();
+        //On créé un Utilisateur
+        Users usr = new Users();
         //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
         usr.setId(c.getInt(NUM_COL_ID));
         usr.setNom(c.getString(NUM_COL_NOM));
@@ -97,7 +100,7 @@ public class UserDB {
         //On ferme le cursor
         c.close();
 
-        //On retourne le livre
+        //On retourne l'utilisateur
         return usr;
     }
 

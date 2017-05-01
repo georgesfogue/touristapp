@@ -49,7 +49,7 @@ public class activity_register extends AppCompatActivity {
 
         //Création d'une instance de la classe UserDB
         final UserDB userdb = new UserDB(this);
-        final user users = new user(); //Création d'un utilisateur
+        final Users users = new Users(); //Création d'un utilisateur
         userdb.open(); // on ouvre la base de donnee pour ecrire
 
         inputFullName = (EditText) findViewById(R.id.name);
@@ -88,7 +88,7 @@ public class activity_register extends AppCompatActivity {
                     users.setMotDePasse(password);
 
 
-                    user userfromdb = userdb.getUserWithName(users.getEmail());
+                    Users userfromdb = userdb.getUserWithName(users.getEmail());
                     //Si un utilisateur est retourné (donc si l'utilisateur  à bien été ajouté à la BDD)
                     if(userfromdb != null){
                         //On affiche les infos de l'utilisateur dans un Toast

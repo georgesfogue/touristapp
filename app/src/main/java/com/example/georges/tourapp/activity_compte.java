@@ -24,19 +24,21 @@ public class activity_compte extends AppCompatActivity {
     private RecyclerSimpleViewAdapter adapter;
     List<String> items = new ArrayList<String>();
     private Button btnadd;
+    private Button btnQ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compte);
-
+        final user loguser = getIntent().getExtras().getParcelable("user");
         btnadd = (Button) findViewById(R.id.myButtonSimpleAdd);
+        btnQ = (Button) findViewById(R.id.btquit);
 
         recyclerView = (RecyclerView) findViewById(R.id.myListSimple);
 
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 27; i++) {
             // new item
-            items.add("test " + i);
+            items.add(" France - Paris \nVisite Musé du louvre " + i);
         }
         adapter = new RecyclerSimpleViewAdapter(items, android.R.layout.simple_list_item_1);
         recyclerView.setAdapter(adapter);
@@ -46,7 +48,20 @@ public class activity_compte extends AppCompatActivity {
         btnadd.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
+                user usr = new user(loguser.getEmail(), loguser.getMotDePasse());
                 Intent i = new Intent(getApplicationContext(), activity_add.class);
+                i.putExtra("user", usr);
+                startActivity(i);
+                finish();
+            }
+        });
+
+        btnQ.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View view) {
+                //user usr = new user(loguser.getEmail(), loguser.getMotDePasse());
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                //i.putExtra("user", usr);
                 startActivity(i);
                 finish();
             }

@@ -40,9 +40,10 @@ public class MainActivity extends AppCompatActivity {
 
         //Création d'une instance de la classe UserDB
         final UserDB userdb = new UserDB(this);
-        final user users = new user(); //Création d'un utilisateur
+        final ActivityDB actvdb = new ActivityDB(this);
+        //final user users = new user(); //Création d'un utilisateur
         userdb.open(); // on ouvre la base de donnee pour ecrire
-
+        actvdb.open();
         inputEmail = (EditText) findViewById(R.id.email);
         inputPassword = (EditText) findViewById(R.id.password);
         btnLogout = (Button) findViewById(R.id.btnLogout);
@@ -65,18 +66,19 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String email = inputEmail.getText().toString();
                 String password = inputPassword.getText().toString();
-                user logusr = new user();
+                Users logusr = new Users();
                 logusr.setEmail(email);
                 logusr.setMotDePasse(password);
 
                 if (!email.isEmpty() && !password.isEmpty()) {
-                    user utilisateur = userdb.getUserWithName(email);
-
+                    Users utilisateur = userdb.getUserWithName(email);
                     if(utilisateur != null){
                         if(logusr.getMotDePasse().equals(utilisateur.getMotDePasse())){
                             Toast.makeText(getApplicationContext(),
                                     "Mot de passe correct  ", Toast.LENGTH_LONG).show();
+                            user logusrt = new user(email, password);
                             Intent i = new Intent(getApplicationContext(), activity_compte.class);
+                            i.putExtra("user", logusrt);
                             startActivity(i);
                             finish();
                         }

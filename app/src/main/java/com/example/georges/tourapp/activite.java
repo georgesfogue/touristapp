@@ -1,38 +1,50 @@
 package com.example.georges.tourapp;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by Georges on 18/04/2017.
  */
 
-public class activite {
+public class activite implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+    private int id;
+    private String Useremail;
     private String nomPays;
     private String nomVille;
     private String addresse;
-    private Date dateopen;
-    private Date Horairedebut;
-    private Date Horairefin;
+    private String Horairedebut;
+    private String Horairefin;
     private String activite;
     private String description;
 
-    public activite(String nomPays, String nomVille, String addresse, Date dateopen, Date horaire, String activite, String description, Date horairefin) {
+    /*public activite(String useremail,String nomPays, String nomVille, String addresse, String dateopen, String horairedebut, String activite, String description, String horairefin) {
+        Useremail = useremail;
         this.nomPays = nomPays;
         this.nomVille = nomVille;
         this.addresse = addresse;
         this.dateopen = dateopen;
-        Horairedebut = horaire;
+        Horairedebut = horairedebut;
         Horairefin = horairefin;
         this.activite = activite;
         this.description = description;
+    }*/
+
+    public void setHorairedebut(String horairedebut) {
+        Horairedebut = horairedebut;
     }
 
-    public Date getHorairefin() {
-        return Horairefin;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setHorairefin(Date horairefin) {
+    public void setUseremail(String useremail) {
+        Useremail = useremail;
+    }
+
+    public void setHorairefin(String horairefin) {
         Horairefin = horairefin;
     }
 
@@ -48,20 +60,28 @@ public class activite {
         this.addresse = addresse;
     }
 
-    public void setDateopen(Date dateopen) {
-        this.dateopen = dateopen;
-    }
-
-    public void setHoraire(Date horaire) {
-        Horairedebut = horaire;
-    }
-
     public void setActivite(String activite) {
         this.activite = activite;
     }
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getHorairedebut() {
+        return Horairedebut;
+    }
+
+    public String getUseremail() {
+        return Useremail;
+    }
+
+    public String getHorairefin() {
+        return Horairefin;
     }
 
     public String getNomPays() {
@@ -74,14 +94,6 @@ public class activite {
 
     public String getAddresse() {
         return addresse;
-    }
-
-    public Date getDateopen() {
-        return dateopen;
-    }
-
-    public Date getHoraire() {
-        return Horairedebut;
     }
 
     public String getActivite() {
