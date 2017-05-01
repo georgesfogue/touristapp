@@ -4,14 +4,23 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ActivityDB {
 
-    private static final int VERSION_BDDB = 1;
+    private static final int VERSION_BDDB = 2;
     private static final String NOM_BDD = "DBtouract.db";
 
-    private static final String TABLE_ACT = "table_act";
+    private static final String TABLE_ACT = "Activite";
     private static final String COL_IDACT = "id";
     private static final int NUM_COL_id = 0;
     private static final String COL_USRMAIL = "USRMAIL";
@@ -26,20 +35,17 @@ public class ActivityDB {
     private static final int NUM_COL_TITLE = 5;
     private static final String COL_DESCR = "DESCRIPTION";
     private static final int NUM_COL_DESCR = 6;
-    private static final String COL_OPENDATE = "OPENDATE";
-    private static final int NUM_COL_OPENDATE = 7;
     private static final String COL_HOPEN = "HOPEN";
-    private static final int NUM_COL_HOPEN = 8;
+    private static final int NUM_COL_HOPEN = 7;
     private static final String COL_HCLOSE = "HCLOSE";
-    private static final int NUM_COL_HCLOSE = 9;
+    private static final int NUM_COL_HCLOSE = 8;
 
     private SQLiteDatabase bdd;
-
-    private Database maBaseSQLite;
+    private DatabaseAct maBaseSQLite;
 
     public ActivityDB(Context context) {
         //On crée la BDD et sa table
-        maBaseSQLite = new Database(context, NOM_BDD, null, VERSION_BDDB);
+        maBaseSQLite = new DatabaseAct(context, NOM_BDD, null, VERSION_BDDB);
     }
 
     public void open() {
@@ -91,9 +97,39 @@ public class ActivityDB {
         return bdd.delete(TABLE_ACT, COL_IDACT + " = " + id, null);
     }
 
+
+    // Getting All Contacts
+    public List<activite> getAllActivite() {
+        List<activite> ActiviteList = new ArrayList<>();
+        // Select All Query
+        String selectQuery = "SELECT * FROM " + TABLE_ACT;
+        //SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = bdd.rawQuery(selectQuery, null);
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                activite Activ = new activite();
+                Activ.setUseremail(cursor.getString(1));
+                Activ.setNomPays(cursor.getString(2));
+                Activ.setNomVille(cursor.getString(3));
+                Activ.setAddresse(cursor.getString(4));
+                Activ.setActivite(cursor.getString(5));
+                Activ.setDescription(cursor.getString(6));
+                Activ.setHorairedebut(cursor.getString(7));
+                Activ.setHorairefin(cursor.getString(8));
+                // Adding contact to list
+                ActiviteList.add(Activ);
+            } while (cursor.moveToNext());
+        }
+        // return contact list
+        return ActiviteList;
+
+    }
+
     public activite getActivite(String titre) {
         //Récupère dans un Cursor les valeurs correspondant à une activite contenu dans la BDD (ici on sélectionne l'utilisateur grâce à son nom)
-        Cursor c = bdd.query(TABLE_ACT, new String[]{COL_IDACT, COL_USRMAIL, COL_PAYS, COL_VILLES, COL_ADD, COL_TITLE, COL_DESCR, COL_HOPEN, COL_HCLOSE}, COL_TITLE + " LIKE \"" + titre + "\"", null, null, null, null);
+        Cursor c = bdd.query(TABLE_ACT, new String[]{COL_IDACT, COL_USRMAIL, COL_PAYS, COL_VILLES}, COL_USRMAIL + " LIKE \"" + titre + "\"", null, null, null, null, null);
         return cursorToactivite(c);
     }
 
@@ -105,7 +141,7 @@ public class ActivityDB {
 
         //Sinon on se place sur le premier élément
         c.moveToFirst();
-        //On créé un livre
+        //On créé un utilisateur
         activite usract = new activite();
         //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
         usract.setId(c.getInt(NUM_COL_id));

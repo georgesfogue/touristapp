@@ -3,13 +3,19 @@ package com.example.georges.tourapp;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteDatabase.CursorFactory;
 
 /**
  * Created by Georges on 01/05/2017.
  */
 public class DatabaseAct extends SQLiteOpenHelper {
 
-    private static final String TABLE_ACT = "table_act";
+    private static final String TAG = SQLiteOpenHelper.class.getSimpleName();
+    private static final boolean DEBUG_STRICT_READONLY = false;
+    private boolean mIsInitializing;
+    private boolean mEnableWriteAheadLogging;
+
+    private static final String TABLE_ACT = "Activite";
     private static final String COL_IDACT = "id";
     private static final String COL_USRMAIL = "USRMAIL";
     private static final String COL_PAYS = "PAYS";
@@ -26,7 +32,7 @@ public class DatabaseAct extends SQLiteOpenHelper {
             + COL_ADD + " TEXT NOT NULL, " + COL_TITLE + " TEXT NOT NULL, "
             + COL_DESCR + " TEXT NOT NULL, " + COL_HOPEN + " TEXT," + COL_HCLOSE + " TEXT);";
 
-    public DatabaseAct(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+    public DatabaseAct(Context context, String name, CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
 

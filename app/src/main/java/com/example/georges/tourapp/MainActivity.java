@@ -7,6 +7,7 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.Profile;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
@@ -113,7 +114,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 //txtStatus.setText("Connexion reussi\n" + loginResult.getAccessToken());
+
+                Profile profile = Profile.getCurrentProfile();
+                String firstName = profile.getFirstName();
+
+                user logusrt = new user(firstName, "123456");
                 Intent i = new Intent(getApplicationContext(), activity_compte.class);
+                i.putExtra("user", logusrt);
                 startActivity(i);
                 finish();
             }
