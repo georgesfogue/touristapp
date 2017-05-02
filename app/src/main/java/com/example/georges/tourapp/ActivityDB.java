@@ -99,10 +99,12 @@ public class ActivityDB {
 
 
     // Getting All Contacts
-    public List<activite> getAllActivite() {
+    public List<activite> getAllActivite(String email) {
         List<activite> ActiviteList = new ArrayList<>();
         // Select All Query
-        String selectQuery = "SELECT * FROM " + TABLE_ACT;
+        String selectQuery = "SELECT * FROM " + TABLE_ACT + " WHERE TRIM(" + COL_USRMAIL + ")  = '" + email.trim() + "'";
+        //Cursor c = db.rawQuery("SELECT * FROM tbl1 WHERE TRIM(name) = '"+name.trim()+"'", null);
+
         //SQLiteDatabase db = this.getWritableDatabase();
 
         Cursor cursor = bdd.rawQuery(selectQuery, null);

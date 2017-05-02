@@ -115,10 +115,10 @@ public class MainActivity extends AppCompatActivity {
             public void onSuccess(LoginResult loginResult) {
                 //txtStatus.setText("Connexion reussi\n" + loginResult.getAccessToken());
 
-                Profile profile = Profile.getCurrentProfile();
-                String firstName = profile.getFirstName();
+                //Profile profile = Profile.getCurrentProfile();
+                //String firstName = profile.getFirstName();
 
-                user logusrt = new user(firstName, "123456");
+                user logusrt = new user("13337@ecam.be", "123456");
                 Intent i = new Intent(getApplicationContext(), activity_compte.class);
                 i.putExtra("user", logusrt);
                 startActivity(i);

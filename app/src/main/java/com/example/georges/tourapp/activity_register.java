@@ -73,6 +73,13 @@ public class activity_register extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
+        btnLinkToLogin.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
 
         // Register Button Click event
         btnRegister.setOnClickListener(new View.OnClickListener() {

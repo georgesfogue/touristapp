@@ -50,33 +50,19 @@ public class activity_compte extends AppCompatActivity {
         btnQ = (Button) findViewById(R.id.btquit);
 
         recyclerView = (RecyclerView) findViewById(R.id.myListSimple);
+        recyclerView.setHasFixedSize(true);
 
         actvdb.open();
 
-        List<activite> listact = actvdb.getAllActivite();
+        List<activite> listact = actvdb.getAllActivite(loguser.getEmail());
         actvdb.close();
         for (activite ac : listact) {
-            items.add(ac.getNomPays() + " - " + ac.getNomVille() + "\n" + ac.getActivite()
+            items.add("\n" + ac.getNomPays() + " - " + ac.getNomVille() + "\n" + ac.getActivite()
                     + "\n" + "Adresse : " + ac.getAddresse() + "\n" + "Horaire d'ouverture : " + ac.getHorairedebut()
-                    + " - " + ac.getHorairefin() + "\n" + "\n" + "Description : " + "\n" + ac.getDescription());
+                    + " - " + ac.getHorairefin() + "\n" + "\n" + "Description : " + "\n" + ac.getDescription() + "\n");
         }
 
-        //activite Activ = actvdb.getActivite(loguser.getEmail());
 
-        //items.add(Activ.getNomPays() + " - " + Activ.getNomVille() + "\n" + Activ.getActivite() + "\n" + Activ.getDescription());
-
-        /*ResultSet r = actvdb.getResultOf("SELECT * from table_act where USRMAIL = '"+loguser.getEmail()+"'");
-        try {
-            while (r.next()){
-                items.add(r.getString("PAYS") + " - " + r.getString("VILLES") + "\n" + r.getString("TITLE"));
-            }
-        } catch (SQLException ex) {
-        }*/
-
-        /*for (int i = 0; i < 27; i++) {
-            // new item
-            items.add(" France - Paris \nVisite Musé du louvre " + i);
-        }*/
         adapter = new RecyclerSimpleViewAdapter(items, android.R.layout.simple_list_item_1);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

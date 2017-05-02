@@ -20,6 +20,7 @@
         <activity android:name=".activity_login" />
         <activity android:name=".activity_compte" />
         <activity android:name=".activity_add" />
+
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
     </application>
 

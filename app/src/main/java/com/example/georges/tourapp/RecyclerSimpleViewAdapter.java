@@ -67,9 +67,9 @@ public class RecyclerSimpleViewAdapter  extends RecyclerView.Adapter<RecyclerSim
         holder.primaryText.setText(item);
         holder.itemView.setTag(item);
         if ((position % 2) == 0) {
-            holder.itemView.setBackgroundResource(R.color.colorAccent);
+            holder.itemView.setBackgroundResource(R.color.colorGC);
         } else {
-            holder.itemView.setBackgroundResource(R.color.colorPrimary);
+            holder.itemView.setBackgroundResource(R.color.colorblanc);
         }
     }
 
