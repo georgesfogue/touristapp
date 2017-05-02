@@ -57,7 +57,7 @@ public class activity_compte extends AppCompatActivity {
         List<activite> listact = actvdb.getAllActivite(loguser.getEmail());
         actvdb.close();
         for (activite ac : listact) {
-            items.add("\n" + ac.getNomPays() + " - " + ac.getNomVille() + "\n" + ac.getActivite()
+            items.add("\n" + ac.getNomPays() + " - " + ac.getNomVille() + "\n" + "Site  :  " + ac.getActivite()
                     + "\n" + "Adresse : " + ac.getAddresse() + "\n" + "Horaire d'ouverture : " + ac.getHorairedebut()
                     + " - " + ac.getHorairefin() + "\n" + "\n" + "Description : " + "\n" + ac.getDescription() + "\n");
         }

@@ -14,8 +14,7 @@ public class NetworkUtil {
 
         URL urlObject = new URL(url);
 
-        HttpURLConnection urlConnection =
-                (HttpURLConnection) urlObject.openConnection();
+        HttpURLConnection urlConnection = (HttpURLConnection) urlObject.openConnection();
 
         try {
             InputStream in = urlConnection.getInputStream();

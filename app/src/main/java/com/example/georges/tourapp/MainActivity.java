@@ -1,5 +1,8 @@
 package com.example.georges.tourapp;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -50,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         btnLogout = (Button) findViewById(R.id.btnLogout);
         btnLinkToRegister = (Button) findViewById(R.id.btnLinkToRegisterScreen);
         btnconect = (Button)findViewById(R.id.btnLogin);
+
 
         // Link to Register Screen
         btnLinkToRegister.setOnClickListener(new View.OnClickListener() {
