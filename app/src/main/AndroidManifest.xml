@@ -19,9 +19,6 @@
         <activity android:name=".activity_register" />
         <activity android:name=".activity_compte" />
         <activity android:name=".activity_add" />
-
-        <uses-permission android:name="android.permission.INTERNET" />
-        <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
     </application>
 
